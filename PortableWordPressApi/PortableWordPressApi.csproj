@@ -40,6 +40,8 @@
   <ItemGroup>
     <Compile Include="Http\LinkHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ApiIndex.cs" />
+    <Compile Include="Resources\Meta.cs" />
     <Compile Include="WordPressApi.cs" />
     <Compile Include="WordPressApiDiscovery.cs" />
   </ItemGroup>
