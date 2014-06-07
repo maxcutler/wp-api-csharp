@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PortableWordPressApi;
+using PortableWordPressApi.Resources;
 
 namespace ApiConsole
 {
@@ -27,6 +29,10 @@ namespace ApiConsole
 			var api = await discovery.DiscoverApiForSite();
 
 			Console.WriteLine("Site's API endpoint: {0}", api.ApiRootUri);
+
+			var indexResponse = await httpClient.GetAsync(api.ApiRootUri);
+			var index = JsonConvert.DeserializeObject<ApiIndex>(await indexResponse.Content.ReadAsStringAsync());
+			Console.WriteLine("Supported routes: TODO");
 		}
 	}
 }
