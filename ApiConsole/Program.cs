@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -32,7 +33,11 @@ namespace ApiConsole
 
 			var indexResponse = await httpClient.GetAsync(api.ApiRootUri);
 			var index = JsonConvert.DeserializeObject<ApiIndex>(await indexResponse.Content.ReadAsStringAsync());
-			Console.WriteLine("Supported routes: TODO");
+			Console.WriteLine("Supported routes:");
+			foreach (var route in index.Routes)
+			{
+				Console.WriteLine("\t" + route.Key);
+			}
 		}
 	}
 }
