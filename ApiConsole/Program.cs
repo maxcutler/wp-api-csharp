@@ -9,7 +9,7 @@ namespace ApiConsole
 	{
 		static void Main(string[] args)
 		{
-			Task.WhenAll(AsyncMain());
+			Task.WaitAll(AsyncMain());
 
 			Console.WriteLine("Press any key to close.");
 			Console.Read();
