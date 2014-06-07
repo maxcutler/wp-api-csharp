@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using PortableWordPressApi.Http;
 
 namespace PortableWordPressApi
 {
 	public class WordPressApiDiscovery
 	{
+		private const string WpApiLinkRel = "https://github.com/WP-API/WP-API";
+
 		private readonly HttpClient httpClient;
 
 		public WordPressApiDiscovery(Uri siteUri, HttpClient httpClient)
@@ -28,13 +31,25 @@ namespace PortableWordPressApi
 
 			foreach (var linkHeader in linkHeaders)
 			{
-				// parse link headers
+				try
+				{
+					var header = new LinkHeader(linkHeader);
+					if (header.Relation == WpApiLinkRel)
+					{
+						return new WordPressApi
+						{
+							ApiRootUri = header.LinkUri
+						};
+					}
+				}
+				catch (ArgumentException ex)
+				{
+					// log malformed Link header
+				}
 			}
 
-			return new WordPressApi
-			{
-				ApiRootUri = this.SiteUri
-			};
+			// throw exception?
+			return null;
 		}
 	}
 }
