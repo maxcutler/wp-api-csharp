@@ -30,6 +30,7 @@ namespace ApiConsole
 			var api = await discovery.DiscoverApiForSite();
 
 			Console.WriteLine("Site's API endpoint: {0}", api.ApiRootUri);
+			Console.WriteLine();
 
 			var indexResponse = await httpClient.GetAsync(api.ApiRootUri);
 			var index = JsonConvert.DeserializeObject<ApiIndex>(await indexResponse.Content.ReadAsStringAsync());
@@ -38,13 +39,29 @@ namespace ApiConsole
 			{
 				Console.WriteLine("\t" + route.Key);
 			}
+			Console.WriteLine();
 
 			var postsResponse = await httpClient.GetAsync(api.ApiRootUri + "posts");
-			var posts = JsonConvert.DeserializeObject<List<Post>>(await postsResponse.Content.ReadAsStringAsync());
+			var postsResponseContent = await postsResponse.Content.ReadAsStringAsync();
+			var posts = JsonConvert.DeserializeObject<List<Post>>(postsResponseContent);
+
+			Console.WriteLine("Recent posts:");
+			foreach (var post in posts)
+			{
+				Console.WriteLine("\t{0}", post.Title);
+			}
+			Console.WriteLine();
 
 			var mediaResponse = await httpClient.GetAsync(api.ApiRootUri + "media");
 			var mediaResponseContent = await mediaResponse.Content.ReadAsStringAsync();
 			var media = JsonConvert.DeserializeObject<List<Media>>(mediaResponseContent);
+
+			Console.WriteLine("Recent media:");
+			foreach (var medium in media)
+			{
+				Console.WriteLine("\t{0}", medium.Source);
+			}
+			Console.WriteLine();
 		}
 	}
 }
