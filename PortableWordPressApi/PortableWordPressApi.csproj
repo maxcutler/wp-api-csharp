@@ -43,6 +43,9 @@
     <Compile Include="Resources\ApiIndex.cs" />
     <Compile Include="Resources\Meta.cs" />
     <Compile Include="Resources\Post.cs" />
+    <Compile Include="Resources\PostStatus.cs" />
+    <Compile Include="Resources\PostType.cs" />
+    <Compile Include="Resources\User.cs" />
     <Compile Include="WordPressApi.cs" />
     <Compile Include="WordPressApiDiscovery.cs" />
   </ItemGroup>
