@@ -47,7 +47,8 @@ namespace PortableWordPressApi.Resources
 
 		public bool Sticky { get; set; }
 
-		// thumbnail
+		////[JsonProperty("featured_image")]
+		////public Media FeaturedImage { get; set; }
 
 		[JsonProperty("post_format")]
 		public string PostFormat { get; set; }
