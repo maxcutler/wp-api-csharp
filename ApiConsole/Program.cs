@@ -41,6 +41,10 @@ namespace ApiConsole
 
 			var postsResponse = await httpClient.GetAsync(api.ApiRootUri + "posts");
 			var posts = JsonConvert.DeserializeObject<List<Post>>(await postsResponse.Content.ReadAsStringAsync());
+
+			var mediaResponse = await httpClient.GetAsync(api.ApiRootUri + "media");
+			var mediaResponseContent = await mediaResponse.Content.ReadAsStringAsync();
+			var media = JsonConvert.DeserializeObject<List<Media>>(mediaResponseContent);
 		}
 	}
 }
