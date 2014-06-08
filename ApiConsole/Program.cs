@@ -38,6 +38,9 @@ namespace ApiConsole
 			{
 				Console.WriteLine("\t" + route.Key);
 			}
+
+			var postsResponse = await httpClient.GetAsync(api.ApiRootUri + "posts");
+			var posts = JsonConvert.DeserializeObject<List<Post>>(await postsResponse.Content.ReadAsStringAsync());
 		}
 	}
 }
