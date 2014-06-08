@@ -41,6 +41,10 @@
     <Compile Include="Http\LinkHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ApiIndex.cs" />
+    <Compile Include="Resources\ImageMeta.cs" />
+    <Compile Include="Resources\Media.cs" />
+    <Compile Include="Resources\MediaMeta.cs" />
+    <Compile Include="Resources\MediaSize.cs" />
     <Compile Include="Resources\Meta.cs" />
     <Compile Include="Resources\Post.cs" />
     <Compile Include="Resources\PostMeta.cs" />
