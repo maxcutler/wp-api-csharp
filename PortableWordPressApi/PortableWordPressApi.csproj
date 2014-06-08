@@ -50,6 +50,7 @@
     <Compile Include="Resources\PostMeta.cs" />
     <Compile Include="Resources\PostStatus.cs" />
     <Compile Include="Resources\PostType.cs" />
+    <Compile Include="Resources\Term.cs" />
     <Compile Include="Resources\User.cs" />
     <Compile Include="WordPressApi.cs" />
     <Compile Include="WordPressApiDiscovery.cs" />

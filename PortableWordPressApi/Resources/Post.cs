@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace PortableWordPressApi.Resources
@@ -53,6 +54,8 @@ namespace PortableWordPressApi.Resources
 
 		[JsonProperty("post_meta")]
 		public PostMeta PostMeta { get; set; }
+
+		public Dictionary<string, List<Term>> Terms { get; set; }
 
 		public Meta Meta { get; set; }
 	}
